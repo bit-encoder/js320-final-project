@@ -1,0 +1,49 @@
+:root {
+    --white: #ffffff;
+    --gray-10: #f4f4f4;
+    
+    --gray-100: #161616;
+    --gray-90: #262626;
+}
+
+body {
+    background-color: var(--gray-100);
+    color: var(--white);
+}
+
+.top-nav-bar {
+    margin: 16px 72px;
+}
+
+.top-nav-bar ul {
+    padding: 0;
+
+    
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+
+.top-nav-bar li {
+    background-color: var(--gray-90);
+    list-style-type: none;
+}
+
+.news-desk {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
+.article-row {
+    background-color: var(--gray-10);
+    padding: 16px;
+    margin: 16px;
+}
+
+.summary-card {
+    width: 240px;
+
+    display: flex;
+    flex-flow: row nowrap;
+}
