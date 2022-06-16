@@ -1,16 +1,15 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function NavBar() {
+    const deskOptions = ['home', 'business', 'culture', 'editorial', 'national','opinion', 'about']
+
     return (
         <nav className='top-nav-bar'>
             <ul>
-                <li><a href="https://www.google.com">Home</a></li>
-                <li><a href="https://www.google.com">Business</a></li>
-                <li><a href="https://www.google.com">Entrepreneurs</a></li>
-                <li><a href="https://www.google.com">Financial</a></li>
-                <li><a href="https://www.google.com">National</a></li>
-                <li><a href="https://www.google.com">Opinion</a></li>
-                <li><a href="https://www.google.com">About</a></li>
+                {deskOptions.map( (option) => // Entries are capitalized by .css file
+                    (<li className='desk-entry'><Link to={option}>{option}</Link></li>))
+                }
             </ul>
         </nav>
     );

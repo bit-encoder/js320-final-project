@@ -1,10 +1,17 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { writeFriendlyDate, spitOutDates } from './zz-supportFunctions';
 
-export default function ListArticles({news_desk}) {
+export default function ListArticles({news_desk, page}) {
+
+    const dates = spitOutDates()
+    const stringOneYearAgo = dates[0];
+    const stringTodayDate = dates[1];
+
     const API_NYT_ARTICLE = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?'
-    const NEWSDESK = `begin_date=20210611&end_date=20220611&fq=news_desk:(%22${news_desk}%22)&sort=newest&api-key=`
+    const NEWSDESK = `begin_date=${stringOneYearAgo}&end_date=${stringTodayDate}&
+                        fq=news_desk:(%22${news_desk}%22)&page=${page}&sort=newest&api-key=`
     const API_KEY = '5K7S1Io86tSdhZgxgg514mGvp7Km3sUX'
 
     const [articles, setArticles] = useState([]);
@@ -19,7 +26,8 @@ export default function ListArticles({news_desk}) {
         // eslint-disable-next-line
     }, []);
         
-    if (loading) { return <p>IS LOADING</p>}    // This is necessary because there is a delay between the call and the response.
+    // This is necessary because there is a delay between the call and the response.
+    if (loading) { return <p className='loading-warning'>IS LOADING</p>}    
 
     // I would like to thank code source and the person who wrote this:
     // https://codesource.io/how-to-use-foreach-loop-in-react/
@@ -28,22 +36,20 @@ export default function ListArticles({news_desk}) {
     articles.forEach(entry => {
         articleList.push(
             <div className='summary-card'>
-                <div className='summary-image'>
-                    {/* <img alt="to be determined" src={"https://www.nytimes.com/" + entry.multimedia[17].url}/> */}
-                </div>
-
-                <div>
+                <div key={entry._id} className='summary-info'>
                     <h3>{entry.headline['main']}</h3>
+                    <h5>{writeFriendlyDate(entry.pub_date)}</h5>
                     <p>{entry.snippet}</p>
+
+                    <p><a href={entry.web_url}>Read more</a></p>
                 </div>
-                {/* <p key={idNumber}>{entry.abstract}</p> */}
             </div>
         );
     })
 
     return(
-        <div className={'article-row summary-cards-' + news_desk}>
-            <h1>{news_desk}</h1>
+        <div className='article-column'>
+            <h1 className='desk-name'>{news_desk}</h1>
             {articleList}
         </div>
     );

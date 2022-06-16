@@ -4,6 +4,8 @@
     
     --gray-100: #161616;
     --gray-90: #262626;
+
+    --blue-60: #0f62fe;
 }
 
 body {
@@ -11,8 +13,14 @@ body {
     color: var(--white);
 }
 
+/* TOP NAV BAR
+** └─ desk-entry
+*/
 .top-nav-bar {
-    margin: 16px 72px;
+    /* margin: 16px 72px; */
+    margin-left: auto;
+    margin-right: auto;
+    width: 1486px;
 }
 
 .top-nav-bar ul {
@@ -25,25 +33,104 @@ body {
 }
 
 .top-nav-bar li {
+    margin: 16px;
+    padding: 16px;
+    width: 240px;
+
     background-color: var(--gray-90);
     list-style-type: none;
+
+    font-size: 20pt;
 }
 
+.top-nav-bar li a {
+    color: var(--gray-10);
+    text-decoration: none;
+
+}
+
+.top-nav-bar li {
+    transition: background-color 350ms;
+}
+
+.top-nav-bar li:hover {
+    background-color: var(--blue-60);
+}
+
+.top-nav-bar li:first-child {
+    margin-left: 0px;
+}
+
+.top-nav-bar li:last-child {
+    margin-right: 0px;
+}
+
+.desk-entry::first-letter {
+    text-transform: capitalize;
+}
+
+/*
+**
+*/
 .news-desk {
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
 }
 
-.article-row {
-    background-color: var(--gray-10);
-    padding: 16px;
+.article-column {
     margin: 16px;
+    padding: 16px;
+    width: 240px;
+    
+    color: black;
 }
 
+.loading-warning {
+    background-color: var(--gray-10);
+    color: var(--gray-90);
+    margin: 16px;
+    padding: 16px;
+    width: 240px;
+
+}
+
+/* CLASS: desk-name
+**  
+*/
+.desk-name {
+    background-color: var(--gray-10);
+    margin: 16px;
+    padding: 16px;
+    width: 240px;
+}
+
+.desk-name::first-letter {
+    text-transform: capitalize;
+}
+
+/* SUMMARY CARD
+** ├─ summary-image
+** └─ summary-info
+**
+**
+*/
 .summary-card {
+    background-color: var(--gray-10);
+    margin: 16px;
+    padding: 16px;
     width: 240px;
 
     display: flex;
     flex-flow: row nowrap;
 }
+
+/* SUMMARY CARD
+** ├─ summary-image
+** └─ summary-info
+*/ 
+
+/* SUMMARY CARD
+** ├─ summary-image
+** └─ summary-info
+*/
