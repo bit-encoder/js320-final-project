@@ -12,7 +12,7 @@ export default function ListArticles({news_desk, page}) {
 
     const API_NYT_ARTICLE = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?'
     const NEWSDESK = `begin_date=${stringOneYearAgo}&end_date=${stringTodayDate}&fq=news_desk:(%22${news_desk}%22)&page=${page}&sort=newest&api-key=`
-    const API_KEY = '';
+    const API_KEY = '5K7S1Io86tSdhZgxgg514mGvp7Km3sUX';
 
     const [articles, setArticles] = useState([]);
     const [loading, isLoading] = useState(true);
