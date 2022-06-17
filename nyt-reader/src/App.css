@@ -6,6 +6,8 @@
     --gray-90: #262626;
 
     --blue-60: #0f62fe;
+
+    --page-width: 1486px;
 }
 
 body {
@@ -20,7 +22,7 @@ body {
     /* margin: 16px 72px; */
     margin-left: auto;
     margin-right: auto;
-    width: 1486px;
+    width: var(--page-width);
 }
 
 .top-nav-bar ul {
@@ -125,12 +127,48 @@ body {
     flex-flow: row nowrap;
 }
 
-/* SUMMARY CARD
-** ├─ summary-image
-** └─ summary-info
-*/ 
-
-/* SUMMARY CARD
-** ├─ summary-image
-** └─ summary-info
+/* ABOUT PAGE
+** └─ extra-space
 */
+.about-page {
+    margin-left: auto;
+    margin-right: auto;
+    width: var(--page-width);
+
+    color: var(--gray-100);
+    background-color: var(--gray-10);
+}
+
+.about-page ol {
+    padding: 32px;
+}
+
+.about-page ol li {
+    padding-bottom: 16px;
+}
+
+.extra-space {
+    padding-left: 64px;
+    padding-right: 64px;
+}
+.extra-space h1 {
+    padding-top: 16px;
+}
+
+/* TIMER
+** ├─ api-timer
+** ├─ timer-restricted
+** └─ timer-goahead
+*/
+
+.api-timer {
+
+}
+
+.timer-restricted {
+    background-color: red;
+}
+
+.timer-goAhead {
+    background-color: green;
+}

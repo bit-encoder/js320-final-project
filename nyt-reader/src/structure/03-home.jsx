@@ -2,7 +2,6 @@ import React from 'react';
 import ListArticles from './02-listArticles';
 
 export default function Home() {
-
     return(
         <div className = 'news-desk'>
             <ListArticles news_desk='business' page='0' />

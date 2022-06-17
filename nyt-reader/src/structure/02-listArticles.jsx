@@ -1,6 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import { writeFriendlyDate, spitOutDates } from './zz-supportFunctions';
 
 export default function ListArticles({news_desk, page}) {
@@ -10,9 +11,8 @@ export default function ListArticles({news_desk, page}) {
     const stringTodayDate = dates[1];
 
     const API_NYT_ARTICLE = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?'
-    const NEWSDESK = `begin_date=${stringOneYearAgo}&end_date=${stringTodayDate}&
-                        fq=news_desk:(%22${news_desk}%22)&page=${page}&sort=newest&api-key=`
-    const API_KEY = '5K7S1Io86tSdhZgxgg514mGvp7Km3sUX'
+    const NEWSDESK = `begin_date=${stringOneYearAgo}&end_date=${stringTodayDate}&fq=news_desk:(%22${news_desk}%22)&page=${page}&sort=newest&api-key=`
+    const API_KEY = '';
 
     const [articles, setArticles] = useState([]);
     const [loading, isLoading] = useState(true);
@@ -24,7 +24,7 @@ export default function ListArticles({news_desk, page}) {
                 setArticles(data.response.docs);
                 isLoading(false); }) 
         // eslint-disable-next-line
-    }, []);
+    }, [news_desk]);
         
     // This is necessary because there is a delay between the call and the response.
     if (loading) { return <p className='loading-warning'>IS LOADING</p>}    
@@ -53,4 +53,9 @@ export default function ListArticles({news_desk, page}) {
             {articleList}
         </div>
     );
+}
+
+ListArticles.propTypes = {
+    news_desk: PropTypes.string.isRequired,
+    page: PropTypes.string.isRequired
 }
